@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theft News Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="header">
+        <div class="logo">
+            <img src="theftspotmnl-icon.png" alt="TheftSpotMNL">
+        </div>
+        <div class="nav">
+            <button>Home</button>
+            <button>Dashboard</button>
+            <button>About</button>
+            <button>Contact</button>
+        </div>
+    </div>
+
+    <div class="content">
+
+        <div class="result-section">
+            <h2 class="section-title">Results</h2>
+
+            <div class="result-header">
+                <div>Title</div>
+                <div>Content</div>
+                <div>Classification</div>
+                <div>Confidence</div>
+            </div>
+
+            <div class="result-row">
+                <div>Sample Title</div>
+                <div>Sample content goes here...</div>
+                <div class="theft-tag">Theft</div>
+                <div>89%</div>
+            </div>
+        </div>
+
+        <div class="upload-url">
+            <h3>Upload URL</h3>
+            <p>Upload the articles of your choice</p>
+            <input type="text" placeholder="Paste article URL here">
+            <button>Classify</button>
+        </div>
+
+        <div class="dashboard-container">
+
+            <!-- Left: Dashboard Metrics -->
+            <div class="dashboard-box">
+                <h3>Dashboard</h3>
+                <div class="metrics-row">
+                    <div class="metric">
+                        <p>Total Articles</p>
+                        <div class="metric-number total">20</div>
+                    </div>
+                    <div class="metric">
+                        <p>Theft-Related</p>
+                        <div class="metric-number theft">12</div>
+                    </div>
+                    <div class="metric">
+                        <p>Non Theft-Related</p>
+                        <div class="metric-number non-theft">8</div>
+                    </div>
+                    <div class="metric">
+                        <p>Avg Confidence</p>
+                        <div class="metric-number confidence">89%</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Pie Chart -->
+            <div class="piechart-box">
+                <h3>Theft vs Non Theft</h3>
+                <div class="piechart-content">
+                    <div class="legend">
+                        <div><span class="color theft"></span> Theft</div>
+                        <div><span class="color non-theft"></span> Non Theft</div>
+                    </div>
+                    <img src="88b10cf2-a7ae-4b9c-8cf9-e0991fe9595a.png" alt="Pie Chart">
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>© 2025 Theft News Classifier — The Bad Habits</p>
+            <div class="social-icons">
+                <img src="facebook-icon.png" alt="Facebook">
+                <img src="twitter-icon.png" alt="Twitter">
+                <img src="linkedin-icon.png" alt="LinkedIn">
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

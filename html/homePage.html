@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TheftSpotMNL – Theft News Classifier</title>
+
+  <!-- Google Fonts & Font Awesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/4b051e4b36.js" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- ▸ NAVBAR --------------------------------------------------------- -->
+  <header>
+    <div class="container nav">
+      <div class="logo">
+        <i class="fas fa-shield-alt"></i><span>TheftSpotMNL</span>
+      </div>
+
+      <nav>
+        <ul>
+          <li><a href="homePage.html">Home</a></li>
+          <li><a href="#">Dashboard</a></li>
+          <li><a href="About.html ">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ▸ HERO ----------------------------------------------------------- -->
+  <section class="hero">
+    <div class="overlay"></div>
+    <div class="hero-content container">
+      <h1>Theft News Classifier</h1>
+      <h2>Spot Theft News in Seconds</h2>
+      <p>
+        Upload news articles in seconds. Instantly find out if they're theft‑related
+        or not. Helping communities stay informed and aware.
+      </p>
+      <a href="#" class="btn">Upload Now</a>
+    </div>
+  </section>
+
+  <!-- ▸ HOW IT WORKS --------------------------------------------------- -->
+  <section class="how">
+    <div class="container">
+      <h2>How It works</h2>
+
+      <div class="grid">
+        <!-- 1 -->
+        <div class="step">
+          <i class="fas fa-file-upload"></i>
+          <h3>1. Upload</h3>
+          <p>Upload your CSV file of news articles.</p>
+        </div>
+
+        <!-- 2 -->
+        <div class="step">
+          <i class="fas fa-search"></i>
+          <h3>2. Analyze</h3>
+          <p>Our tool reads each article and spots which ones talk about theft.</p>
+        </div>
+
+        <!-- 3 -->
+        <div class="step">
+          <i class="fas fa-chart-bar"></i>
+          <h3>3. View Results</h3>
+          <p>Clear results with confidence levels.</p>
+        </div>
+
+        <!-- sources -->
+        <div class="sources">
+          <h3>Recommended News Sources</h3>
+          <p>For best results, please use news article links from these trusted publishers:</p>
+          <ul>
+            <li><span class="dot"></span>Philstar</li>
+            <li><span class="dot"></span>Philippine News Agency (PNA)</li>
+            <li><span class="dot"></span>GMA Network</li>
+            <li><span class="dot"></span>TopGear PH</li>
+            <li><span class="dot"></span>Manila Times</li>
+            <li><span class="dot"></span>The Manila Journal</li>
+          </ul>
+          <small>*Links from other sites may not be supported yet.</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ▸ FOOTER --------------------------------------------------------- -->
+  <footer>
+    <div class="container">
+      <div class="social">
+        <a href="#"><i class="fab fa-facebook-square"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+      </div>
+      <p>&copy; 2025 Theft News Classifier — The Bad Habits</p>
+    </div>
+  </footer>
+
+  <!-- ▸ ACTIVE‑LINK SCRIPT (same on every page) ------------------------ -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const current = (location.pathname.split("/").pop() || "homePage.html");
+      document.querySelectorAll("nav a").forEach(a => {
+        const href = a.getAttribute("href");
+        if (href === current) a.classList.add("active");
+      });
+    });
+  </script>
+</body>
+</html>
+
