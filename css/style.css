@@ -69,7 +69,7 @@ nav a { font-weight: 500; text-decoration: none; color: var(--text-dark); transi
 .sources small { font-size: .75rem; opacity: .8; }
 
 /* ─── FOOTER ───────────────────────────────────────────────────────── */
-footer { background: var(--bg-footer); color: var(--text-light); text-align: center; padding: 2rem 0; }
+footer { background: var(--bg-footer); color: var(--text-light); text-align: bottom; padding: 2rem 0; }
 .social { margin-bottom: 1rem; }
 .social a { color: #fff; font-size: 1.6rem; margin: 0 .7rem; transition: opacity .25s; }
 .social a:hover { opacity: .7; }
