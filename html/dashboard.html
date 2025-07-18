@@ -33,19 +33,12 @@
                 <div>Confidence</div>
             </div>
 
-            <div class="result-row">
-    {% if url_result %}
-        <div>{{ article_title or "Article" }}</div>
-        <div>{{ article }}</div>
-        <div class="{{ 'theft-tag' if url_result == 'Theft' else 'non-theft-tag' }}">{{ url_result }}</div>
-        <div>{{ confidence or "N/A" }}</div>
-    {% else %}
+    <div class="result-row">
         <div>Sample Title</div>
         <div>Sample content goes here...</div>
         <div class="theft-tag">Theft</div>
         <div>89%</div>
-    {% endif %}
-</div>
+    </div>
         </div>
 
         <div class="upload-url">
