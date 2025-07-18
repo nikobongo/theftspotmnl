@@ -34,19 +34,39 @@
             </div>
 
             <div class="result-row">
-                <div>Sample Title</div>
-                <div>Sample content goes here...</div>
-                <div class="theft-tag">Theft</div>
-                <div>89%</div>
-            </div>
+    {% if url_result %}
+        <div>{{ article_title or "Article" }}</div>
+        <div>{{ article }}</div>
+        <div class="{{ 'theft-tag' if url_result == 'Theft' else 'non-theft-tag' }}">{{ url_result }}</div>
+        <div>{{ confidence or "N/A" }}</div>
+    {% else %}
+        <div>Sample Title</div>
+        <div>Sample content goes here...</div>
+        <div class="theft-tag">Theft</div>
+        <div>89%</div>
+    {% endif %}
+</div>
         </div>
 
         <div class="upload-url">
-            <h3>Upload URL</h3>
-            <p>Upload the articles of your choice</p>
-            <input type="text" placeholder="Paste article URL here">
-            <button>Classify</button>
+    <h3>Upload URL</h3>
+    <p>Upload the articles of your choice</p>
+    <form method="POST" action="/dashboard">
+        <input type="text" name="article_url" placeholder="Paste article URL here" required>
+        <button type="submit" name="action" value="predict_url">Classify</button>
+    </form>
+    {% if error %}
+        <p style="color:red;">{{ error }}</p>
+    {% endif %}
+    {% if url_result %}
+        <div class="result-row">
+            <div>{{ article_title or "Article" }}</div>
+            <div>{{ article }}</div>
+            <div class="{{ 'theft-tag' if url_result == 'Theft' else 'non-theft-tag' }}">{{ url_result }}</div>
+            <div>{{ confidence or "N/A" }}</div>
         </div>
+    {% endif %}
+</div>
 
         <div class="dashboard-container">
 
