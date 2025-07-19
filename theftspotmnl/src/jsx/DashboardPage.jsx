@@ -1,18 +1,20 @@
 import { useState } from 'react';
+import {
+  PieChart, Pie, Cell, Tooltip, Legend
+} from 'recharts';
 import '../css/DashboardPage.css';
 
 function Dashboard() {
   const [articleUrl, setArticleUrl] = useState('');
   const [error, setError] = useState('');
-  const [urlResult, setUrlResult] = useState('');
-  const [articleTitle, setArticleTitle] = useState('');
-  const [article, setArticle] = useState('');
-  const [confidence, setConfidence] = useState('');
+  const [results, setResults] = useState([]);
+  const [predictions, setPredictions] = useState([]);
+  const [submittedUrls, setSubmittedUrls] = useState([]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch('/dashboard', {
+      const res = await fetch('http://127.0.0.1:5000/dashboard', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ article_url: articleUrl }),
@@ -22,15 +24,52 @@ function Dashboard() {
         setError(data.error || 'Something went wrong');
         return;
       }
-      setError('');
-      setUrlResult(data.url_result);
-      setArticleTitle(data.article_title);
-      setArticle(data.article);
-      setConfidence(data.confidence);
+
+      const newResult = {
+        title: data.article_title || 'No title found',
+        content: data.article || 'No content',
+        label: data.url_result,
+        confidence: data.confidence || 'N/A',
+      };
+
+      setResults((prev) => [newResult, ...prev]);
+
+      setPredictions((prev) => [
+        ...prev,
+        {
+          label: newResult.label,
+          confidence: parseFloat(newResult.confidence.replace('%', '')) || 0,
+        },
+      ]);
+
+      setSubmittedUrls((prev) => [articleUrl, ...prev]); // Add the URL to the top of the list
+      setArticleUrl(''); // Clear the input after submission
     } catch (err) {
       setError('Submission failed');
     }
   };
+
+  const getStats = () => {
+    const total = predictions.length;
+    const theft = predictions.filter(p => p.label === 'Theft').length;
+    const nonTheft = total - theft;
+    const avgConfidence = total === 0
+      ? 0
+      : Math.round(
+          predictions.reduce((acc, cur) => acc + cur.confidence, 0) / total
+        );
+    return { total, theft, nonTheft, avgConfidence };
+  };
+
+  const getPieChartData = () => {
+    const { theft, nonTheft } = getStats();
+    return [
+      { name: 'Theft', value: theft },
+      { name: 'Non-Theft', value: nonTheft },
+    ];
+  };
+
+  const { total, theft, nonTheft, avgConfidence } = getStats();
 
   return (
     <div className="content">
@@ -44,12 +83,16 @@ function Dashboard() {
           <div>Confidence</div>
         </div>
 
-        <div className="result-row">
-          <div>Sample Title</div>
-          <div>Sample content goes here...</div>
-          <div className="theft-tag">Theft</div>
-          <div>89%</div>
-        </div>
+        {results.map((result, index) => (
+  <div className="result-row" key={index}>
+    <div><strong>{result.title}</strong></div>
+    <div>{result.content}</div>
+    <div className={result.label === 'Theft' ? 'theft-tag' : 'non-theft-tag'}>
+      {result.label}
+    </div>
+    <div>{result.confidence}</div>
+  </div>
+))}
       </div>
 
       <div className="upload-url">
@@ -68,19 +111,7 @@ function Dashboard() {
             Classify
           </button>
         </form>
-
         {error && <p style={{ color: 'red' }}>{error}</p>}
-
-        {urlResult && (
-          <div className="result-row">
-            <div>{articleTitle || 'Article'}</div>
-            <div>{article}</div>
-            <div className={urlResult === 'Theft' ? 'theft-tag' : 'non-theft-tag'}>
-              {urlResult}
-            </div>
-            <div>{confidence || 'N/A'}</div>
-          </div>
-        )}
       </div>
 
       <div className="dashboard-container">
@@ -89,19 +120,19 @@ function Dashboard() {
           <div className="metrics-row">
             <div className="metric">
               <p>Total Articles</p>
-              <div className="metric-number total">20</div>
+              <div className="metric-number total">{total}</div>
             </div>
             <div className="metric">
               <p>Theft-Related</p>
-              <div className="metric-number theft">12</div>
+              <div className="metric-number theft">{theft}</div>
             </div>
             <div className="metric">
               <p>Non Theft-Related</p>
-              <div className="metric-number non-theft">8</div>
+              <div className="metric-number non-theft">{nonTheft}</div>
             </div>
             <div className="metric">
               <p>Avg Confidence</p>
-              <div className="metric-number confidence">89%</div>
+              <div className="metric-number confidence">{avgConfidence}%</div>
             </div>
           </div>
         </div>
@@ -109,18 +140,22 @@ function Dashboard() {
         <div className="piechart-box">
           <h3>Theft vs Non Theft</h3>
           <div className="piechart-content">
-            <div className="legend">
-              <div>
-                <span className="color theft"></span> Theft
-              </div>
-              <div>
-                <span className="color non-theft"></span> Non Theft
-              </div>
-            </div>
-            <img
-              src="88b10cf2-a7ae-4b9c-8cf9-e0991fe9595a.png"
-              alt="Pie Chart"
-            />
+            <PieChart width={300} height={200}>
+              <Pie
+                data={getPieChartData()}
+                dataKey="value"
+                nameKey="name"
+                cx="50%"
+                cy="50%"
+                outerRadius={70}
+                label
+              >
+                <Cell key="theft" fill="#ff4d4f" />
+                <Cell key="non-theft" fill="#36cfc9" />
+              </Pie>
+              <Tooltip />
+              <Legend />
+            </PieChart>
           </div>
         </div>
       </div>
