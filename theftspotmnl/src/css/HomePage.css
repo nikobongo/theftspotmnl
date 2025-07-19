@@ -1,0 +1,141 @@
+.home {
+  background-image: url('/img/background.jpg');
+  background-size: cover;
+  background-position: center bottom;
+  height: 450px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  color: white;
+  text-align: center;
+}
+
+.home::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 1;
+}
+
+.top-content {
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  position: relative;
+  z-index: 2;
+}
+
+.top-content h1 {
+  font-size: 64px;
+  color: #F52E2E;
+  margin-bottom: 0px;
+}
+
+.top-content p {
+  margin-top: -10px;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 35px;
+}
+
+.top-content h2 {
+  font-size: 32px;
+  max-width: 1300px;
+}
+
+.top-content button {
+  font-family: 'Inter', sans-serif;
+  background-color: #F52E2E;
+  color: white;
+  font-size: 18px;
+  padding: 12px 150px;
+  border: none;
+  margin-top: 25px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.bottom-content {
+  font-family: 'Poppins', sans-serif;
+}
+
+.bottom-content h1 {
+  color: #F52E2E;
+  font-size: 28px;
+  text-align: left;
+  width: 100%;
+  margin-top: 0px;
+}
+
+.content-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 150px;
+  margin-top: 20px;
+  padding: 0 50px;
+}
+
+.main-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.process-definition {
+  display: flex;
+  justify-content: center;
+  gap: 225px;
+  text-align: center;
+}
+
+.step img {
+  height: 75px;
+  width: auto;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 18px;
+}
+
+.process {
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-family: 'Monteserrat', sans-serif;
+  margin-top: 30px;
+}
+
+.definition {
+  max-width: 210px;
+  margin-top: 0px;
+}
+
+.divider {
+  width: 2px;
+  height: 290px;
+  background-color: #ccc;
+}
+
+.reco {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  max-width: 335px;
+}
+
+.reco h3 {
+  color: #F52E2E;
+  margin-bottom: -10px;
+}
+
+.reco p {
+  font-size: 14px;
+}
+
+.reco li {
+  font-size: 14px;
+  font-weight: bold;
+}
