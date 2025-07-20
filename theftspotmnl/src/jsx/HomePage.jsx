@@ -22,7 +22,7 @@ function Home() {
                             <div className="step">
                                 <img src="/img/upload-icon.png" alt="Upload" />
                                 <p className="process">1. Upload</p>
-                                <p className="definition">Upload your csv file of news articles.</p>
+                                <p className="definition">Provide the direct URL of the news article.</p>
                             </div>
                             <div className="step">
                                 <img src="/img/analyze-icon.png" alt="Analyze" />
@@ -36,8 +36,8 @@ function Home() {
                             </div>
                         </div>
                     </div>
-                    <div className="divider" />
-                    <div className="reco">
+                    <div className="home-divider" />
+                    <div className="right-content">
                             <h3>Recommended News Sources</h3>
                             <p>For best results, please use news article links from these trusted publishers:</p>
                             <ul>
