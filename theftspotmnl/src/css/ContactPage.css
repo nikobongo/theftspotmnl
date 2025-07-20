@@ -1,4 +1,5 @@
 .head {
+  font-family: 'Poppins', sans-serif;
   color: #F52E2E;
   font-size: 36px;
   display: flex;
@@ -20,12 +21,14 @@
 }
 
 .contacts h1 {
+  font-family: 'Poppins', sans-serif;
   color: #F52E2E;
   font-size: 24px;
   margin-bottom: 5px;
 }
 
 .contacts p {
+  font-family: 'Poppins', sans-serif;
   color: #000000;
   font-size: 20px;
   margin-bottom: 20px;
