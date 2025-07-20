@@ -170,21 +170,28 @@ const handleSubmit = async (e) => {
         <div className="piechart-box">
           <h3>Incident Distribution</h3>
           <div className="piechart-content">
-            <PieChart width={300} height={268}>
+            <PieChart width={500} height={268}>
               <Pie
                 data={getPieChartData()}
                 dataKey="value"
                 nameKey="name"
                 cx="50%"
                 cy="50%"
-                outerRadius={70}
+                outerRadius={125}
+                labelLine={false}  
                 label
+                fontFamily="Poppins" fontWeight={800}
               >
-                <Cell key="theft" fill="#ff4d4f" />
-                <Cell key="non-theft" fill="#36cfc9" />
+                <Cell key="theft" fill="#F52E2E" />
+                <Cell key="non-theft" fill="#12a430ff" />
               </Pie>
               <Tooltip />
-              <Legend />
+              <Legend 
+                  layout="vertical"
+                  verticalAlign="middle"
+                  align="right"
+                wrapperStyle={{ fontFamily: 'Poppins', fontSize: 25 }}
+              />
             </PieChart>
           </div>
         </div>

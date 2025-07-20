@@ -75,6 +75,11 @@
     width: fit-content;
 }
 
+.recharts-text {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+}
 /* Upload URL */
 .upload-url {
     font-family: 'Poppins', sans-serif;
@@ -131,6 +136,7 @@
     margin-top: 0;
     color: #1a1a1a;
     font-size: 22px;
+    margin-left: 18px;
 }
 
 .metrics-row {
@@ -201,6 +207,7 @@
     font-size: 22px;
     font-family: 'Poppins', sans-serif;
     margin-top: 0;
+    margin-left: 18px;
 }
 
 .piechart-content {
