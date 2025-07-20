@@ -5,10 +5,12 @@ import Dashboard from './jsx/DashboardPage';
 import Nav from './jsx/Nav';
 import About from './jsx/AboutPage';
 import Contact from './jsx/ContactPage';
+import Footer from './jsx/Footer';
 
 function Layout() {
   const location = useLocation();
   const hideNavOn = ['/'];
+  const hideFooter = location.pathname === "/";
 
   return (
     <>
@@ -20,6 +22,7 @@ function Layout() {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
+      {!hideFooter && <Footer />}
     </>
   );
 }
