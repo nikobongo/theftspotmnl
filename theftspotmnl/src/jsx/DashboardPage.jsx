@@ -138,9 +138,9 @@ function Dashboard() {
         </div>
 
         <div className="piechart-box">
-          <h3>Theft vs Non Theft</h3>
+          <h3>Incident Distribution</h3>
           <div className="piechart-content">
-            <PieChart width={300} height={200}>
+            <PieChart width={300} height={274}>
               <Pie
                 data={getPieChartData()}
                 dataKey="value"
