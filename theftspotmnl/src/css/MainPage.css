@@ -12,39 +12,24 @@ body {
 }
 
 .main img {
-  width: 1000px;
-  margin-bottom: 40px;
-}
-
-.logo {
-  width: 300px;
+  margin-bottom: 75px;
+  width: 1150px;
   filter: drop-shadow(0 0 20px #F52E2E);
 }
 
 .main button {
-  padding: 15px 60px;
   font-size: 24px;
+  padding: 16px 80px;
   background-color: #000000;
   color: white;
   border: none;
   border-radius: 30px;
   cursor: pointer;
   font-family: 'Poppins', sans-serif;
+  filter: drop-shadow(0 0 20px #F52E2E);
 }
 
-.glow {
-  margin-top: 20px;
-  padding: 12px 30px;
-  font-size: 16px;
-  background-color: black;
-  color: white;
-  border: none;
-  border-radius: 30px;
-  cursor: pointer;
-  filter: drop-shadow(0 0 15px #F52E2E);
+.main button:hover {
+  box-shadow: 0 0 40px #F52E2E;
   transition: all 0.3s ease;
-}
-
-.glow:hover {
-  box-shadow: 0 0 25px #F52E2E;
 }

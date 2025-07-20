@@ -3,6 +3,8 @@ import Main from './jsx/MainPage';
 import Home from './jsx/HomePage';
 import Dashboard from './jsx/DashboardPage';
 import Nav from './jsx/Nav';
+import About from './jsx/AboutPage';
+import Contact from './jsx/ContactPage';
 
 function Layout() {
   const location = useLocation();
@@ -15,6 +17,8 @@ function Layout() {
         <Route path="/" element={<Main />} />
         <Route path="/home" element={<Home />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
     </>
   );

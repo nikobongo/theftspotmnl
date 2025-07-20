@@ -5,23 +5,31 @@
   padding: 0px 20px;
 }
 
-.logos img {
+.header img {
   height: 35px;
   width: auto;
 }
 
-.nav {
+.nav ul {
+  list-style: none;
   display: flex;
-  justify-content: flex-end;
+  margin: 0;
 }
 
-.nav button {
-  background-color: #ECECEC;
-  border: none;
+.nav li {
   font-family: 'Montserrat', sans-serif;
-  font-weight: bold;
   font-size: 18px;
-  margin-left: 10px;
-  padding: 20px;
+  font-weight: bold;
   cursor: pointer;
+  padding: 20px 40px;
+  transition: background 0.3s ease;
+}
+
+.nav li:hover {
+  background-color: #F52E2E;
+  color: white;
+}
+
+.nav li.active {
+  color: #F52E2E;
 }

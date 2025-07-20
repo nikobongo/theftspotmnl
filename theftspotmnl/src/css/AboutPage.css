@@ -1,0 +1,44 @@
+.center-below-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  margin-top: 50px;
+}
+
+.a {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  text-align: center;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+}
+
+.section h3 {
+  margin-bottom: 15px;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #000;
+}
+
+.contents {
+  height: 250px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.15);
+  padding: 25px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.contents.red {
+  background-color: #F52E2E;
+  color: white;
+}

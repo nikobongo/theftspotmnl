@@ -5,9 +5,9 @@ function Main() {
   const navigate = useNavigate();
 
   return (
-    <div class="main">
-      <img src="/img/theftspotmnl-icon.png" alt="TheftSpotMNL" class="logo" />
-      <button class="glow" onClick={() => navigate('/Home')}>Try it now!</button>
+    <div className="main">
+      <img src="/img/theftspotmnl-icon.png" alt="TheftSpotMNL" />
+      <button onClick={() => navigate('/home')}>Try it now!</button>
     </div>
   );
 }
