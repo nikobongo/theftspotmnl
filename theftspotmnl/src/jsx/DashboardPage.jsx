@@ -2,6 +2,7 @@ import { useState } from 'react';
 import {
   PieChart, Pie, Cell, Tooltip, Legend
 } from 'recharts';
+import { useEffect } from 'react';
 import '../css/DashboardPage.css';
 
 function Dashboard() {
@@ -10,44 +11,70 @@ function Dashboard() {
   const [results, setResults] = useState([]);
   const [predictions, setPredictions] = useState([]);
   const [submittedUrls, setSubmittedUrls] = useState([]);
+  useEffect(() => {
+  const savedResults = JSON.parse(localStorage.getItem('results')) || [];
+  const savedPredictions = JSON.parse(localStorage.getItem('predictions')) || [];
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const res = await fetch('http://127.0.0.1:5000/dashboard', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ article_url: articleUrl }),
-      });
-      const data = await res.json();
-      if (!res.ok) {
-        setError(data.error || 'Something went wrong');
-        return;
-      }
+  setResults(savedResults);
+  setPredictions(savedPredictions);
+}, []);
 
-      const newResult = {
-        title: data.article_title || 'No title found',
-        content: data.article || 'No content',
-        label: data.url_result,
-        confidence: data.confidence || 'N/A',
-      };
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  try {
+    const res = await fetch('http://127.0.0.1:5000/dashboard', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ article_url: articleUrl }),
+    });
+    const data = await res.json();
+    if (!res.ok) {
+      setError(data.error || 'Something went wrong');
+      return;
+    }
 
-      setResults((prev) => [newResult, ...prev]);
+    const newResult = {
+      title: data.article_title || 'No title found',
+      content: data.article || 'No content',
+      label: data.url_result,
+      confidence: data.confidence || 'N/A',
+    };
 
-      setPredictions((prev) => [
+    // Update state
+    setResults((prev) => {
+      const updated = [newResult, ...prev];
+      localStorage.setItem('results', JSON.stringify(updated));
+      return updated;
+    });
+
+    setPredictions((prev) => {
+      const updated = [
         ...prev,
         {
           label: newResult.label,
           confidence: parseFloat(newResult.confidence.replace('%', '')) || 0,
         },
-      ]);
+      ];
+      localStorage.setItem('predictions', JSON.stringify(updated));
+      return updated;
+    });
 
-      setSubmittedUrls((prev) => [articleUrl, ...prev]); // Add the URL to the top of the list
-      setArticleUrl(''); // Clear the input after submission
-    } catch (err) {
-      setError('Submission failed');
-    }
+    setSubmittedUrls((prev) => [articleUrl, ...prev]);
+    setArticleUrl('');
+  } catch (err) {
+    setError('Submission failed');
+  }
+};
+
+    const handleClearHistory = () => {
+    setResults([]);
+    setPredictions([]);
+    setSubmittedUrls([]);
+    localStorage.removeItem('results');
+    localStorage.removeItem('predictions');
+    localStorage.removeItem('submittedUrls');
   };
+
 
   const getStats = () => {
     const total = predictions.length;
@@ -97,7 +124,7 @@ function Dashboard() {
 
       <div className="upload-url">
         <h3>Upload URL</h3>
-        <p>Upload the articles of your choice</p>
+        <p>Provide article URLs for analysis</p>
         <form onSubmit={handleSubmit}>
           <input
             type="text"
@@ -109,6 +136,9 @@ function Dashboard() {
           />
           <button type="submit" name="action" value="predict_url">
             Classify
+          </button>
+          <button type="button" onClick={handleClearHistory}>
+            Clear History
           </button>
         </form>
         {error && <p style={{ color: 'red' }}>{error}</p>}
@@ -140,7 +170,7 @@ function Dashboard() {
         <div className="piechart-box">
           <h3>Incident Distribution</h3>
           <div className="piechart-content">
-            <PieChart width={300} height={274}>
+            <PieChart width={300} height={268}>
               <Pie
                 data={getPieChartData()}
                 dataKey="value"
