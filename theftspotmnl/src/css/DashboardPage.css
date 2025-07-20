@@ -18,12 +18,13 @@
 
 .content {
     padding: 50px;
+    padding-top: 0%;
 }
 
 .section-title {
     font-size: 28px;
     font-weight: bold;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 /* Result Box */
@@ -65,6 +66,7 @@
 
 /* Theft Tag */
 .theft-tag {
+    position: relative;
     background-color: #F52E2E;
     color: white;
     padding: 5px 15px;
@@ -72,8 +74,20 @@
     text-align: center;
     font-weight: bold;
     font-size: 14px;
-    width: fit-content;
+    width: 150px;
 }
+
+.non-theft-tag {
+    background-color: #12a430ff;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+    width: 150px;
+}
+
 
 .recharts-text {
   font-family: 'Poppins', sans-serif;
@@ -127,8 +141,9 @@
     background: white;
     border-radius: 15px;
     box-shadow: 0px 10px 25px rgba(0,0,0,0.2);
-    padding: 30px;
+    padding: 15px;
     width: 58%;
+    height: 180px;
 }
 
 .dashboard-box h3 {
@@ -153,7 +168,7 @@
 }
 
 .metric p {
-    font-size: 20px;  
+    font-size: 13px;  
     font-weight: 600;
     color: #7D7D7D;
     margin-bottom: 15px;
@@ -161,10 +176,10 @@
 
 /* Bigger Metric Number Boxes */
 .metric-number {
-    font-size: 32px;
+    font-size: 30px;
     font-weight: bold; /* Bold numbers */
-    width: 180px;
-    height: 180px;
+    width: 120px;
+    height: 70px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -197,23 +212,25 @@
 /* Pie Chart */
 .piechart-box {
     background: white;
-    padding: 20px;
     border-radius: 15px;
-    box-shadow: 0px 10px 25px rgba(0,0,0,0.2);
+    
+    padding: 15px;
     width: 38%;
+    height: 180px;
 }
 
 .piechart-box h3 {
-    font-size: 22px;
     font-family: 'Poppins', sans-serif;
     margin-top: 0;
+    color: #1a1a1a;
+    font-size: 22px;
     margin-left: 18px;
 }
 
 .piechart-content {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .legend {
@@ -243,4 +260,45 @@
 .piechart-box img {
     width: 200px;
     height: auto;
+}
+
+
+.animated-content {
+  overflow: hidden;
+  cursor: pointer;
+  max-height: 3em; /* Adjust to about 2 lines */
+  transition: max-height .6s ease;
+  white-space: normal;
+  text-overflow: ellipsis;
+  position: relative;
+  line-height: 1.5em;
+}
+
+.animated-content::after {
+  content: '...';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  background: white;
+  padding-left: 0.3em;
+  display: block;
+  height: 1.5em;
+}
+
+.animated-content.expanded {
+  max-height: 500px; /* Adjust for your longest expected text */
+}
+
+.animated-content.expanded::after {
+  content: none;
+}
+
+.results-scrollbox {
+  max-height: 500px;         /* or adjust height as needed */
+  overflow-y: auto;
+  padding-right: 10px;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  background-color: #fff;
 }

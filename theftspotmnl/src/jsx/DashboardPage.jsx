@@ -5,6 +5,20 @@ import {
 import { useEffect } from 'react';
 import '../css/DashboardPage.css';
 
+function TruncatableContent({ text }) {
+  const [expanded, setExpanded] = useState(false);
+
+  return (
+    <div
+      className={`animated-content ${expanded ? 'expanded' : ''}`}
+      onClick={() => setExpanded(!expanded)}
+      title="Click to expand/collapse"
+    >
+      {text}
+    </div>
+  );
+}
+
 function Dashboard() {
   const [articleUrl, setArticleUrl] = useState('');
   const [error, setError] = useState('');
@@ -102,27 +116,63 @@ const handleSubmit = async (e) => {
     <div className="content">
       <div className="result-section">
         <h2 className="section-title">Results</h2>
+          <div className="dashboard-container">
+            <div className="dashboard-box">
+              <h3>Dashboard</h3>
+              <div className="metrics-row">
+                <div className="metric">
+                  <div className="metric-number total">{total}</div>
+                  <p>Total Articles</p>
+                </div>
+                <div className="metric">
+                  <div className="metric-number theft">{theft}</div>
+                  <p>Theft-Related</p>
+                </div>
+                <div className="metric">
+                  <div className="metric-number non-theft">{nonTheft}</div>
+                  <p>Non Theft-Related</p>
+                </div>
+                <div className="metric">
+                  <div className="metric-number confidence">{avgConfidence}%</div>
+                  <p>Avg Confidence Theft</p>
+                </div>
+                <div className="metric">
+                  <div className="metric-number confidence">{avgConfidence}%</div>
+                  <p>Avg Confidence Non-Theft</p>
+                </div>
+              </div>
+            </div>
 
-        <div className="result-header">
-          <div>Title</div>
-          <div>Content</div>
-          <div>Classification</div>
-          <div>Confidence</div>
-        </div>
-
-        {results.map((result, index) => (
-  <div className="result-row" key={index}>
-    <div><strong>{result.title}</strong></div>
-    <div>{result.content}</div>
-    <div className={result.label === 'Theft' ? 'theft-tag' : 'non-theft-tag'}>
-      {result.label}
-    </div>
-    <div>{result.confidence}</div>
-  </div>
-))}
-      </div>
-
-      <div className="upload-url">
+            <div className="piechart-box">
+              <h3>Incident Distribution</h3>
+              <div className="piechart-content">
+                <PieChart width={500} height={120}>
+                  <Pie
+                    data={getPieChartData()}
+                    dataKey="value"
+                    nameKey="name"
+                    cx="50%"
+                    cy="50%"
+                    outerRadius={55}
+                    labelLine={false}  
+                    label
+                    fontFamily="Poppins" fontWeight={800}
+                  >
+                    <Cell key="theft" fill="#F52E2E" />
+                    <Cell key="non-theft" fill="#12a430ff" />
+                  </Pie>
+                  <Tooltip />
+                  <Legend 
+                      layout="vertical"
+                      verticalAlign="middle"
+                      align="right"
+                    wrapperStyle={{ fontFamily: 'Poppins', fontSize: 25 }}
+                  />
+                </PieChart>
+              </div>
+            </div>
+          </div>
+          <div className="upload-url">
         <h3>Upload URL</h3>
         <p>Provide article URLs for analysis</p>
         <form onSubmit={handleSubmit}>
@@ -142,60 +192,26 @@ const handleSubmit = async (e) => {
           </button>
         </form>
         {error && <p style={{ color: 'red' }}>{error}</p>}
-      </div>
-
-      <div className="dashboard-container">
-        <div className="dashboard-box">
-          <h3>Dashboard</h3>
-          <div className="metrics-row">
-            <div className="metric">
-              <p>Total Articles</p>
-              <div className="metric-number total">{total}</div>
+          </div>
+          <div className="result-header">
+          <div>Title</div>
+          <div>Content</div>
+          <div>Classification</div>
+          <div>Confidence</div>
+          </div>
+          <div className="results-scrollbox">
+                {results.map((result, index) => (
+          <div className="result-row" key={index}>
+            <div><strong>{result.title}</strong></div>
+                <TruncatableContent text={result.content} />
+            <div className={result.label === 'Theft' ? 'theft-tag' : 'non-theft-tag'}>
+              {result.label}
             </div>
-            <div className="metric">
-              <p>Theft-Related</p>
-              <div className="metric-number theft">{theft}</div>
-            </div>
-            <div className="metric">
-              <p>Non Theft-Related</p>
-              <div className="metric-number non-theft">{nonTheft}</div>
-            </div>
-            <div className="metric">
-              <p>Avg Confidence</p>
-              <div className="metric-number confidence">{avgConfidence}%</div>
-            </div>
+            <div>{result.confidence}</div>
+          </div>
+        ))}
           </div>
         </div>
-
-        <div className="piechart-box">
-          <h3>Incident Distribution</h3>
-          <div className="piechart-content">
-            <PieChart width={500} height={268}>
-              <Pie
-                data={getPieChartData()}
-                dataKey="value"
-                nameKey="name"
-                cx="50%"
-                cy="50%"
-                outerRadius={125}
-                labelLine={false}  
-                label
-                fontFamily="Poppins" fontWeight={800}
-              >
-                <Cell key="theft" fill="#F52E2E" />
-                <Cell key="non-theft" fill="#12a430ff" />
-              </Pie>
-              <Tooltip />
-              <Legend 
-                  layout="vertical"
-                  verticalAlign="middle"
-                  align="right"
-                wrapperStyle={{ fontFamily: 'Poppins', fontSize: 25 }}
-              />
-            </PieChart>
-          </div>
-        </div>
-      </div>
     </div>
   );
 }
