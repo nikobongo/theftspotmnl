@@ -204,10 +204,16 @@
     color: white;
 }
 
-.metric-number.confidence {
+.metric-number.confidence1 {
     background-color: #FFFFFF;
     color: #F52E2E;
 }
+
+.metric-number.confidence2 {
+    background-color: #F52E2E;
+    color: #FFFFFF;
+}
+
 
 /* Pie Chart */
 .piechart-box {
@@ -262,7 +268,6 @@
     height: auto;
 }
 
-
 .animated-content {
   overflow: hidden;
   cursor: pointer;
@@ -286,12 +291,12 @@
 }
 
 .animated-content.expanded {
-  max-height: 500px; /* Adjust for your longest expected text */
+  max-height: 800px; /* Adjust for your longest expected text */
 }
 
 .animated-content.expanded::after {
   content: none;
-}
+} 
 
 .results-scrollbox {
   max-height: 500px;         /* or adjust height as needed */

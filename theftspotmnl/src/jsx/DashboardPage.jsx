@@ -91,15 +91,21 @@ const handleSubmit = async (e) => {
 
 
   const getStats = () => {
-    const total = predictions.length;
-    const theft = predictions.filter(p => p.label === 'Theft').length;
-    const nonTheft = total - theft;
-    const avgConfidence = total === 0
-      ? 0
-      : Math.round(
-          predictions.reduce((acc, cur) => acc + cur.confidence, 0) / total
-        );
-    return { total, theft, nonTheft, avgConfidence };
+    const theftPreds = predictions.filter(p => p.label === 'Theft');
+    const nonTheftPreds = predictions.filter(p => p.label === 'Non-Theft');
+
+    const avg = (arr) =>
+      arr.length === 0
+        ? 0
+        : Math.round(arr.reduce((sum, p) => sum + p.confidence, 0) / arr.length);
+
+    return {
+      total: predictions.length,
+      theft: theftPreds.length,
+      nonTheft: nonTheftPreds.length,
+      avgTheftConfidence: avg(theftPreds),
+      avgNonTheftConfidence: avg(nonTheftPreds),
+    };
   };
 
   const getPieChartData = () => {
@@ -110,7 +116,13 @@ const handleSubmit = async (e) => {
     ];
   };
 
-  const { total, theft, nonTheft, avgConfidence } = getStats();
+  const {
+  total,
+  theft,
+  nonTheft,
+  avgTheftConfidence,
+  avgNonTheftConfidence
+} = getStats();
 
   return (
     <div className="content">
@@ -133,12 +145,12 @@ const handleSubmit = async (e) => {
                   <p>Non Theft-Related</p>
                 </div>
                 <div className="metric">
-                  <div className="metric-number confidence">{avgConfidence}%</div>
-                  <p>Avg Confidence Theft</p>
+                  <div className="metric-number confidence1">{avgTheftConfidence}%</div>
+                  <p>Avg Theft Confidence</p>
                 </div>
                 <div className="metric">
-                  <div className="metric-number confidence">{avgConfidence}%</div>
-                  <p>Avg Confidence Non-Theft</p>
+                  <div className="metric-number confidence2">{avgNonTheftConfidence}%</div>
+                  <p>Avg Non-Theft Confidence</p>
                 </div>
               </div>
             </div>
