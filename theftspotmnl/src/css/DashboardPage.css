@@ -35,7 +35,7 @@
 
 .result-header {
     display: grid;
-    grid-template-columns: 2fr 4fr 1.5fr 1fr;
+    grid-template-columns: 2fr 6fr 1.2fr 1fr;
     font-weight: bold;
     font-size: 18px;
     color: #333;
@@ -44,7 +44,7 @@
 
 .result-row {
     display: grid;
-    grid-template-columns: 2fr 4fr 1.5fr 1fr;
+    grid-template-columns: 2fr 7fr 1.5fr 1fr;
     background: #fff;
     padding: 20px;
     margin-bottom: 15px;
@@ -60,9 +60,6 @@
     position: relative;
 }
 
-.result-row > div:not(:last-child) {
-    border-right: 1px solid #ccc;
-}
 
 /* Theft Tag */
 .theft-tag {
@@ -75,6 +72,7 @@
     font-weight: bold;
     font-size: 14px;
     width: 150px;
+    margin: 0 auto;
 }
 
 .non-theft-tag {
@@ -86,6 +84,7 @@
     font-weight: bold;
     font-size: 14px;
     width: 150px;
+    margin: 0 auto;
 }
 
 
@@ -291,7 +290,8 @@
 }
 
 .animated-content.expanded {
-  max-height: 800px; /* Adjust for your longest expected text */
+  max-height: 200px; /* Adjust for your longest expected text */
+    overflow: auto;
 }
 
 .animated-content.expanded::after {
@@ -299,7 +299,7 @@
 } 
 
 .results-scrollbox {
-  max-height: 500px;         /* or adjust height as needed */
+  max-height: 200px;         /* or adjust height as needed */
   overflow-y: auto;
   padding-right: 10px;
   margin-top: 10px;
@@ -420,9 +420,5 @@
 
   .piechart-content {
     flex-direction: column;
-  }
-
-  .results-scrollbox {
-    max-height: 400px;
   }
 }
