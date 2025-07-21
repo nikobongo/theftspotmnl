@@ -57,6 +57,7 @@
 
 .bottom-content {
   font-family: 'Poppins', sans-serif;
+  padding-bottom: 79px;
 }
 
 .home-wrapper {
@@ -135,4 +136,71 @@
 .right-content li {
   font-size: 14px;
   font-weight: bold;
+}
+
+@media (max-width: 1024px) {
+  .process-definition {
+    gap: 100px;
+  }
+
+  .home-wrapper {
+    gap: 100px;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .top-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  .top-content h1 {
+    font-size: 36px;
+  }
+
+  .top-content p {
+    font-size: 16px;
+  }
+
+  .top-content h2 {
+    font-size: 18px;
+  }
+
+  .top-content button {
+    font-size: 16px;
+    padding: 10px 40px;
+  }
+
+  .home-wrapper {
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .process-definition {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .home-divider {
+    display: none;
+  }
+
+  .right-content {
+    max-width: 90%;
+    text-align: center;
+  }
+
+  .right-content ul {
+    padding-left: 0;
+    list-style-position: inside;
+  }
 }

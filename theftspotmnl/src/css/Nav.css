@@ -3,18 +3,20 @@
   justify-content: space-between;
   align-items: center;
   margin: 0;
+  padding: 0 20px;
+  position: relative;
 }
 
 .header img {
   height: 35px;
   width: auto;
-  margin-left: 35px;
 }
 
 .nav ul {
   list-style: none;
   display: flex;
   margin: 0;
+  padding: 0;
 }
 
 .nav li {
@@ -22,7 +24,7 @@
   font-size: 18px;
   font-weight: bold;
   cursor: pointer;
-  padding: 20px 40px;
+  padding: 20px 30px;
   transition: background 0.3s ease;
 }
 
@@ -37,4 +39,43 @@
 
 .nav li.active:hover {
   background-color: transparent;
+}
+
+.hamburger {
+  display: none;
+  font-size: 30px;
+  cursor: pointer;
+  user-select: none;
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .nav {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    z-index: 999;
+  }
+
+  .nav.open {
+    display: block;
+  }
+
+  .nav ul {
+    flex-direction: column;
+  }
+
+  .nav li {
+    padding: 15px 25px;
+    width: 150px;
+    text-align: left;
+  }
 }
