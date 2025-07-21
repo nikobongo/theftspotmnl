@@ -7,8 +7,7 @@ function Contact() {
     return (
     <div class="wrapper">
         <div class="head">
-            <h1>Get in</h1>
-            <h1>touch.</h1>
+            <h1>Get in touch</h1>
         </div>
 
         <div class="divider"></div>

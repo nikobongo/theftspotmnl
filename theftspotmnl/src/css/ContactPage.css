@@ -1,3 +1,13 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+  padding: 100px 20px;
+  flex-wrap: wrap;
+  height: auto;
+}
+
 .head {
   font-family: 'Poppins', sans-serif;
   color: #F52E2E;
@@ -18,6 +28,7 @@
   border-radius: 10px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   max-width: 350px;
+  width: 100%;
 }
 
 .contacts h1 {
@@ -34,16 +45,66 @@
   margin-bottom: 20px;
 }
 
-.wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 65vh;
-  gap: 250px;   
-}
-
 .divider {
   width: 2px;
-  height: 425px;
+  height: 400px;
   background-color: #ccc;
+}
+
+@media (max-width: 1024px) {
+  .wrapper {
+    gap: 60px;
+  }
+
+  .head {
+    font-size: 32px;
+  }
+
+  .contacts p {
+    font-size: 18px;
+  }
+
+  .divider {
+    height: 250px;
+  }
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .head {
+    align-items: center;
+    text-align: center;
+    font-size: 28px;
+  }
+
+  .divider {
+    display: none;
+  }
+
+  .contacts {
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .head {
+    font-size: 24px;
+  }
+
+  .contacts h1 {
+    font-size: 20px;
+  }
+
+  .contacts p {
+    font-size: 16px;
+  }
+
+  .contacts {
+    padding: 20px;
+  }
 }

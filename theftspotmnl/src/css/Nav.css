@@ -2,12 +2,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0px 20px;
+  margin: 0;
 }
 
 .header img {
   height: 35px;
   width: auto;
+  margin-left: 35px;
 }
 
 .nav ul {
@@ -32,4 +33,8 @@
 
 .nav li.active {
   color: #F52E2E;
+}
+
+.nav li.active:hover {
+  background-color: transparent;
 }
