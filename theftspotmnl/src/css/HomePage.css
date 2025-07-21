@@ -1,5 +1,5 @@
 .home {
-  background-image: url('/img/background.jpg');
+  background-image: url('/img/asd.jpg');
   background-size: cover;
   background-position: center bottom;
   height: 450px;
@@ -136,6 +136,15 @@
 .right-content li {
   font-size: 14px;
   font-weight: bold;
+}
+
+.right-content li a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.right-content li a:hover {
+  color: #F52E2E;
 }
 
 @media (max-width: 1024px) {

@@ -41,12 +41,12 @@ function Home() {
                             <h3>Recommended News Sources</h3>
                             <p>For best results, please use news article links from these trusted publishers:</p>
                             <ul>
-                                <li>Philstar</li>
-                                <li>Philippine News Agency</li>
-                                <li>GMA Network</li>
-                                <li>TopGear PH</li>
-                                <li>Manila Times</li>
-                                <li>The Manila Journal</li>
+                                <li><a href="https://www.philstar.com" target="_blank" rel="noopener noreferrer">Philstar</a></li>
+                                <li><a href="https://www.pna.gov.ph" target="_blank" rel="noopener noreferrer">Philippine News Agency</a></li>
+                                <li><a href="https://www.gmanetwork.com" target="_blank" rel="noopener noreferrer">GMA Network</a></li>
+                                <li><a href="https://www.topgear.com.ph" target="_blank" rel="noopener noreferrer">TopGear PH</a></li>
+                                <li><a href="https://www.manilatimes.net" target="_blank" rel="noopener noreferrer">Manila Times</a></li>
+                                <li><a href="https://themanilajournal.com" target="_blank" rel="noopener noreferrer">The Manila Journal</a></li>
                             </ul>
                             <p>Links from other sites may not be supported yet.</p>
                         </div>

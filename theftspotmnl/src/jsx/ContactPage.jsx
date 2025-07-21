@@ -16,9 +16,9 @@ function Contact() {
             <h1>Address</h1>
             <p>900 San Marcelino Street, Ermita, Manila, 1000, Philippines.</p>
             <h1>Phone</h1>
-            <p>0935464644422323</p>
+            <p>+63 919 683 4532</p>
             <h1>Mail</h1>
-            <p>TheBadHabits@gmail.com</p>
+            <p>TheBadHabits2025@gmail.com</p>
         </div>
     </div>
     )
