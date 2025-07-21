@@ -19,8 +19,8 @@ nltk.download('stopwords')
 app = Flask(__name__, template_folder="html")
 CORS(app)
 
-model = joblib.load("model/svm_model.pkl")
-vectorizer = joblib.load("model/vectorizer.pkl")
+model = joblib.load("model/svm_modelv3.pkl")
+vectorizer = joblib.load("model/vectorizer1.pkl")
 
 # === Text Preprocessing === #
 def preprocess(text):
